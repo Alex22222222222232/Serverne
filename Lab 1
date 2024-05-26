@@ -1,0 +1,35 @@
+// app.js
+
+// Функція для розрахунку прямокутного трикутника
+function triangle(side1, side2, type) {
+    let result = {};
+
+    if (type === "катети") {
+        result.hypotenuse = Math.sqrt(Math.pow(side1, 2) + Math.pow(side2, 2));
+        result.angleA = Math.atan(side1 / side2) * (180 / Math.PI);
+        result.angleB = 90 - result.angleA;
+    } else if (type === "пряма кут") {
+        result.side1 = side1;
+        result.side2 = side2;
+        result.hypotenuse = Math.sqrt(Math.pow(side1, 2) + Math.pow(side2, 2));
+        result.angleA = Math.atan(side2 / side1) * (180 / Math.PI);
+        result.angleB = 90 - result.angleA;
+    } else if (type === "гіпотенуза") {
+        result.side1 = side1;
+        result.side2 = side2;
+        result.angleA = Math.asin(side1 / side2) * (180 / Math.PI);
+        result.angleB = 90 - result.angleA;
+    } else {
+        return "Неправильний тип трикутника";
+    }
+
+    return result;
+}
+
+// Приклад використання функції
+const side1 = 3;
+const side2 = 4;
+const type = "катети";
+
+const triangleResult = triangle(side1, side2, type);
+console.log(triangleResult);
